@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Dee Art Modulars & Interiors — design system.
+ * Colors are semantic oklch tokens mapped to Tailwind utilities via @theme inline.
+ * Brand: charcoal, warm off-white, burnt terracotta, muted gold, neutral gray.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-charcoal: var(--charcoal);
+  --color-cream: var(--cream);
+  --color-terracotta: var(--terracotta);
+  --color-gold: var(--gold);
+  --color-terracotta-foreground: var(--terracotta-foreground);
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Brand raw values */
+  --charcoal: oklch(0.21 0.004 40);
+  --cream: oklch(0.972 0.008 80);
+  --terracotta: oklch(0.56 0.13 42);
+  --terracotta-foreground: oklch(0.98 0.008 80);
+  --gold: oklch(0.65 0.06 75);
+
+  --background: oklch(0.972 0.008 80);
+  --foreground: oklch(0.21 0.004 40);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.004 40);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.004 40);
+  --primary: oklch(0.56 0.13 42);
+  --primary-foreground: oklch(0.98 0.008 80);
+  --secondary: oklch(0.94 0.01 80);
+  --secondary-foreground: oklch(0.21 0.004 40);
+  --muted: oklch(0.94 0.01 80);
+  --muted-foreground: oklch(0.5 0.008 50);
+  --accent: oklch(0.65 0.06 75);
+  --accent-foreground: oklch(0.21 0.004 40);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.008 80);
+  --border: oklch(0.89 0.008 70);
+  --input: oklch(0.89 0.008 70);
+  --ring: oklch(0.56 0.13 42);
+}
+
+.dark {
+  --background: oklch(0.21 0.004 40);
+  --foreground: oklch(0.972 0.008 80);
+  --card: oklch(0.25 0.004 40);
+  --card-foreground: oklch(0.972 0.008 80);
+  --popover: oklch(0.25 0.004 40);
+  --popover-foreground: oklch(0.972 0.008 80);
+  --primary: oklch(0.56 0.13 42);
+  --primary-foreground: oklch(0.98 0.008 80);
+  --secondary: oklch(0.3 0.006 40);
+  --secondary-foreground: oklch(0.972 0.008 80);
+  --muted: oklch(0.3 0.006 40);
+  --muted-foreground: oklch(0.72 0.008 60);
+  --accent: oklch(0.65 0.06 75);
+  --accent-foreground: oklch(0.21 0.004 40);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.56 0.13 42);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: var(--terracotta);
+    color: var(--terracotta-foreground);
+  }
+}
+
+@utility font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Editorial eyebrow label with a short gold rule */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  color: var(--terracotta);
+  &::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+}
+
+@utility eyebrow-center {
+  &::after {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+}
+
+/* Animated underline that grows on hover */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: left 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+/* Soft luxury card shadow */
+@utility shadow-luxe {
+  box-shadow: 0 24px 60px -32px color-mix(in oklab, var(--charcoal) 55%, transparent);
+}

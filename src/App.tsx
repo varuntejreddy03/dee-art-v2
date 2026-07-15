@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { ScrollToTopOnNavigate } from "./components/ScrollToTopOnNavigate";
 import { Toaster } from "./components/ui/sonner";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -35,6 +36,7 @@ function NotFound() {
 export default function App() {
   return (
     <>
+      <ScrollToTopOnNavigate />
       <Navbar />
       <main>
         <Routes>

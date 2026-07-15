@@ -20,10 +20,6 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about.jpg";
 import ceilingImg from "@/assets/ceiling.jpg";
-import livingImg from "@/assets/living.jpg";
-import tvunitImg from "@/assets/tvunit.jpg";
-import kitchenImg from "@/assets/kitchen.jpg";
-import turnkeyImg from "@/assets/turnkey.jpg";
 import { SectionReveal } from "@/components/SectionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
@@ -47,15 +43,6 @@ const whyChoose = [
   { icon: ClipboardList, title: "End-to-End Management", text: "A single point of contact throughout." },
 ];
 
-const captionTiles = [
-  { src: ceilingImg, caption: "Comfort Meets Class" },
-  { src: livingImg, caption: "Design That Speaks" },
-  { src: aboutImg, caption: "Luxury in Every Line" },
-  { src: tvunitImg, caption: "Bold Ideas, Executed" },
-  { src: kitchenImg, caption: "Elegance in Every Detail" },
-  { src: turnkeyImg, caption: "Crafted with Passion" },
-];
-
 export default function Home() {
   const reduce = useReducedMotion();
 
@@ -69,32 +56,34 @@ export default function Home() {
           width={1920}
           height={1280}
           initial={reduce ? undefined : { scale: 1.12 }}
-          animate={reduce ? undefined : { scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+          animate={reduce ? undefined : { scale: [1.12, 1, 1.08, 1] }}
+          transition={
+            reduce
+              ? undefined
+              : {
+                  duration: 24,
+                  times: [0, 0.15, 0.6, 1],
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+          }
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-charcoal/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-charcoal/50" />
 
-        <div className="relative mx-auto w-full max-w-4xl px-5 text-center sm:px-8">
+        <div className="relative mx-auto w-full max-w-5xl px-5 text-center sm:px-8">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="text-cream"
           >
-            <span className="eyebrow eyebrow-center justify-center text-gold before:bg-gold after:bg-gold">
-              Interior Designers in {site.area}
-            </span>
-            <h1 className="mx-auto mt-7 max-w-3xl font-serif text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="mx-auto font-serif text-[clamp(1.9rem,4.4vw,4.25rem)] leading-[1.08] sm:whitespace-nowrap">
               Crafting <span className="italic text-gold">Timeless</span>{" "}
               Interiors &amp; Modular Spaces
             </h1>
-            <p className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-cream/80 sm:text-lg">
-              Thoughtfully designed homes and workspaces around Gachibowli,
-              Hyderabad — where premium craftsmanship meets everyday comfort.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-11 flex flex-wrap justify-center gap-4">
               <Link
                 to="/contact"
                 className="group inline-flex items-center gap-2 rounded-sm bg-terracotta px-8 py-4 text-sm font-medium tracking-wide text-terracotta-foreground transition-all hover:bg-terracotta/90 hover:shadow-lg hover:shadow-terracotta/25"
@@ -129,16 +118,6 @@ export default function Home() {
             </div>
           </motion.div>
         )}
-      </section>
-
-      {/* Tagline strip */}
-      <section className="bg-terracotta">
-        <div className="mx-auto max-w-4xl px-6 py-11 text-center sm:px-8">
-          <p className="font-serif text-lg italic leading-relaxed text-terracotta-foreground sm:text-2xl">
-            &ldquo;Where creativity meets functionality — every space,
-            thoughtfully designed.&rdquo;
-          </p>
-        </div>
       </section>
 
       {/* About snapshot */}
@@ -194,7 +173,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Caption image grid */}
+      {/* Glimpse */}
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionReveal>
@@ -210,28 +189,36 @@ export default function Home() {
               description="A closer look at the details, textures and finishes that define a Dee Art space."
             />
           </SectionReveal>
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-            {captionTiles.map((tile, i) => (
-              <SectionReveal key={tile.caption} delay={(i % 3) * 0.08}>
-                <div className="group relative aspect-[4/5] overflow-hidden rounded-lg">
-                  <img
-                    src={tile.src}
-                    alt={tile.caption}
-                    width={800}
-                    height={1000}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                    <p className="font-serif text-sm text-cream sm:text-base">
-                      {tile.caption}
-                    </p>
-                    <div className="mt-1.5 h-px w-8 bg-gold/60" />
-                  </div>
-                </div>
-              </SectionReveal>
-            ))}
+          <SectionReveal className="mt-14">
+            <Link
+              to="/portfolio"
+              className="group relative mx-auto block aspect-[4/3] max-w-3xl overflow-hidden rounded-lg shadow-luxe sm:aspect-[16/9]"
+            >
+              <img
+                src={ceilingImg}
+                alt="Comfort Meets Class — a Dee Art living space"
+                width={1600}
+                height={900}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/10 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <p className="font-serif text-xl text-cream sm:text-2xl">
+                  Comfort Meets Class
+                </p>
+                <div className="mt-2 h-px w-10 bg-gold/60" />
+              </div>
+            </Link>
+          </SectionReveal>
+          <div className="mt-8 text-center">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-2 rounded-sm border border-terracotta/40 px-7 py-3 text-sm font-medium tracking-wide text-terracotta transition-all hover:bg-terracotta hover:text-terracotta-foreground"
+            >
+              View Full Portfolio
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>

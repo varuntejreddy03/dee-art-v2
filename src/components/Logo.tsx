@@ -1,40 +1,23 @@
 import { cn } from "@/lib/utils";
+import logoMark from "@/assets/logo-mark.png";
 
 interface LogoProps {
   light?: boolean;
   className?: string;
 }
 
-// Temporary text wordmark. Swap for the uploaded logo file when provided.
 export function Logo({ light, className }: LogoProps) {
   return (
-    <span className={cn("flex flex-col leading-none select-none", className)}>
-      <span className="flex items-baseline gap-1.5">
-        <span
-          className={cn(
-            "font-serif italic text-2xl tracking-tight",
-            light ? "text-cream" : "text-charcoal",
-          )}
-        >
-          dee
-        </span>
-        <span
-          className={cn(
-            "font-serif text-2xl font-semibold tracking-[0.15em]",
-            light ? "text-cream" : "text-charcoal",
-          )}
-        >
-          A<span className="text-terracotta">R</span>T
-        </span>
-      </span>
-      <span
-        className={cn(
-          "text-[0.55rem] font-medium uppercase tracking-[0.32em] mt-0.5",
-          light ? "text-cream/70" : "text-muted-foreground",
-        )}
-      >
-        Modular &amp; Interiors
-      </span>
-    </span>
+    <img
+      src={logoMark}
+      alt="Dee Art Modulars and Interiors"
+      className={cn(
+        "h-11 w-auto object-contain transition-all duration-300 sm:h-12",
+        light
+          ? "brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+          : "drop-shadow-none",
+        className,
+      )}
+    />
   );
 }

@@ -20,6 +20,10 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about.jpg";
 import ceilingImg from "@/assets/ceiling.jpg";
+import livingImg from "@/assets/living.jpg";
+import tvunitImg from "@/assets/tvunit.jpg";
+import kitchenImg from "@/assets/kitchen.jpg";
+import turnkeyImg from "@/assets/turnkey.jpg";
 import { SectionReveal } from "@/components/SectionReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
@@ -55,35 +59,30 @@ export default function Home() {
           alt="Luxury living room interior designed by Dee Art"
           width={1920}
           height={1280}
-          initial={reduce ? undefined : { scale: 1.12 }}
-          animate={reduce ? undefined : { scale: [1.12, 1, 1.08, 1] }}
-          transition={
-            reduce
-              ? undefined
-              : {
-                  duration: 24,
-                  times: [0, 0.15, 0.6, 1],
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }
-          }
+          animate={{ scale: [1, 1.12, 1] }}
+          transition={{
+            duration: 10,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-charcoal/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-charcoal/50" />
 
-        <div className="relative mx-auto w-full max-w-5xl px-5 text-center sm:px-8">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 text-center sm:px-8">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-cream"
+            className="flex flex-col items-center text-cream"
           >
-            <h1 className="mx-auto font-serif text-[clamp(1.9rem,4.4vw,4.25rem)] leading-[1.08] sm:whitespace-nowrap">
+            <h1 className="w-full font-serif text-[clamp(1.6rem,3.8vw,4rem)] leading-[1.08] whitespace-nowrap text-center">
               Crafting <span className="italic text-gold">Timeless</span>{" "}
               Interiors &amp; Modular Spaces
             </h1>
-            <div className="mt-11 flex flex-wrap justify-center gap-4">
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 to="/contact"
                 className="group inline-flex items-center gap-2 rounded-sm bg-terracotta px-8 py-4 text-sm font-medium tracking-wide text-terracotta-foreground transition-all hover:bg-terracotta/90 hover:shadow-lg hover:shadow-terracotta/25"

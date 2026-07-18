@@ -12,8 +12,7 @@ export function Logo({ light, className }: LogoProps) {
       src={logoMark}
       alt="Dee Art Modulars and Interiors"
       className={cn(
-        "h-16 w-auto object-contain sm:h-20",
-        light && "brightness-0 invert",
+        "h-12 w-auto object-contain sm:h-14",
         className,
       )}
     />

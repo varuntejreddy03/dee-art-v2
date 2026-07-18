@@ -38,17 +38,10 @@ export function Navbar() {
   const solid = scrolled || !isHome;
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        solid
-          ? "bg-background/95 backdrop-blur border-b border-border shadow-sm"
-          : "bg-transparent",
-      )}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur border-b border-border shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-2 sm:px-8">
         <Link to="/" aria-label="Dee Art home">
-          <Logo light={!solid} />
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex lg:gap-9">
@@ -59,8 +52,7 @@ export function Navbar() {
               end={l.to === "/"}
               className={({ isActive }) =>
                 cn(
-                  "group relative py-1 text-[0.9rem] font-medium tracking-wide transition-colors hover:text-terracotta",
-                  solid ? "text-foreground" : "text-cream",
+                  "group relative py-1 text-[0.9rem] font-medium tracking-wide transition-colors hover:text-terracotta text-foreground",
                   isActive && "text-terracotta",
                 )
               }
@@ -89,10 +81,7 @@ export function Navbar() {
         </nav>
 
         <button
-          className={cn(
-            "md:hidden",
-            solid ? "text-foreground" : "text-cream",
-          )}
+          className="md:hidden text-foreground"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
         >

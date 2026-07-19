@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden">
+      <section className="relative flex h-[100svh] items-center justify-center overflow-hidden">
         <motion.img
           src={heroImg}
           alt="Luxury living room interior designed by Dee Art"
@@ -78,21 +78,21 @@ export default function Home() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center text-cream"
           >
-            <h1 className="w-full font-serif text-[clamp(1.6rem,3.8vw,4rem)] leading-[1.08] whitespace-nowrap text-center">
+            <h1 className="w-full font-serif leading-tight text-center text-[clamp(1.1rem,5.5vw,4rem)] sm:whitespace-nowrap">
               Crafting <span className="italic text-gold">Timeless</span>{" "}
               Interiors &amp; Modular Spaces
             </h1>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-sm bg-terracotta px-8 py-4 text-sm font-medium tracking-wide text-terracotta-foreground transition-all hover:bg-terracotta/90 hover:shadow-lg hover:shadow-terracotta/25"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-sm bg-terracotta px-8 py-4 text-sm font-medium tracking-wide text-terracotta-foreground transition-all hover:bg-terracotta/90 sm:w-auto"
               >
                 Get Free Consultation
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/portfolio"
-                className="inline-flex items-center gap-2 rounded-sm border border-cream/40 px-8 py-4 text-sm font-medium tracking-wide text-cream backdrop-blur-sm transition-all hover:bg-cream hover:text-charcoal hover:shadow-lg"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-sm border border-cream/40 px-8 py-4 text-sm font-medium tracking-wide text-cream backdrop-blur-sm transition-all hover:bg-cream hover:text-charcoal sm:w-auto"
               >
                 View Portfolio
               </Link>

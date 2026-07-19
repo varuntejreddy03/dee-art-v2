@@ -94,10 +94,10 @@ export function Navbar() {
           <motion.div
             className="fixed inset-0 z-[100] flex flex-col overflow-hidden md:hidden"
             style={{ height: "100dvh", backgroundColor: "#2d2926" }}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             <div className="flex items-center justify-between px-5 py-3.5 sm:px-8">
               <Logo light />
